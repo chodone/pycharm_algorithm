@@ -1,5 +1,28 @@
 
+
+def countingSort(data):
+
+    counts = [0] * 10000
+    result = [0] * len(data)
+
+
+    for i in range(0, len(data)):
+        counts[data[i]] += 1
+
+    for i in range(1, len(counts)):
+        counts[i] += counts[i-1]
+
+    for i in range(len(data)-1, -1, -1):
+        counts[data[i]] -= 1
+        result[counts[data[i]]] = data[i]
+
+    return result
+
+
+
 TC = int(input())
+
+
 
 for tc in range(1, TC+1):
 
@@ -11,7 +34,7 @@ for tc in range(1, TC+1):
     margin = 0
 
     while True:
-        max_price = sorted(price_lst)[-1]
+        max_price = countingSort(price_lst)[-1]
 
         price_lst.index(max_price)
 
