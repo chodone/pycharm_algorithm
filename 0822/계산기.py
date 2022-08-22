@@ -1,4 +1,4 @@
-TC = 1
+TC = 10
 
 for tc in range(1, TC+1):
 
@@ -17,14 +17,14 @@ for tc in range(1, TC+1):
                     if ST[-1] == '+':
                         ST.append(prb[i])
                     else:
-                        while ST[-1] != '+':
-                            cal.append(ST[-1])
-                            ST.pop()
+                        while ST[-1] != '+' :
+                            cal.append(ST.pop())
+                            if not ST:
+                                break
                         ST.append(prb[i])
                 else:
                     while ST:
-                        cal.append(ST[-1])
-                        ST.pop()
+                        cal.append(ST.pop())
 
                     ST.append(prb[i])
         if ST:
@@ -35,22 +35,22 @@ for tc in range(1, TC+1):
 
 
 
-    print(cal)
+
 
     ST.append(int(cal[0]))
 
-    while ST:
-        for i in range(1, len(cal)):
-            if cal[i] != '+' and cal[i] != '*':
-                ST.append(int(cal[i]))
+
+    for i in range(1, len(cal)):
+        if cal[i] != '+' and cal[i] != '*':
+            ST.append(int(cal[i]))
+        else:
+            if cal[i] == '+':
+                a = ST.pop()
+                b = ST.pop()
+                ST.append(a+b)
             else:
+                a = ST.pop()
+                b = ST.pop()
+                ST.append(a*b)
 
-
-
-
-
-
-
-
-
-
+    print(f'#{tc} {ST[0]}')
