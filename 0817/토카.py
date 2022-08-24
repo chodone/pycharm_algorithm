@@ -1,46 +1,21 @@
-def rsp(st, en):
-    if card_lst[st-1] == 1:
-        if card_lst[en-1] == 1:
-            return st
-        elif card_lst[en-1] == 2:
-            return en
-        else:
-            return st
-    elif card_lst[st-1] == 2:
-        if card_lst[en-1] == 1:
-            return st
-        elif card_lst[en-1] == 2:
-            return st
-        else:
-            return en
-    elif card_lst[st-1] == 3:
-        if card_lst[en-1] == 1:
-            return en
-        elif card_lst[en-1] == 2:
-            return st
-        else:
-            return st
-
-def winner(st, en):
+def merge(st, en):
+    if st == en:
+        return st
+    left = merge(st, (st + en) // 2)
+    right = merge((st + en) // 2 + 1, en)
+    return winner(left, right)
 
 
-    if en - st == 1:
-        return rsp(st, en)
-
-    else:
-        winner(st, (st+en) // 2)
-        winner((st+en)//2 + 1, en)
-
-
+def winner(a, b):
+    if cards[a] == cards[b]:
+        return a
+    elif cards[a] - cards[b] == 1 or cards[a] - cards[b] == -2:
+        return a
+    return b
 
 
-TC = int(input())
-
-for tc in range(1, TC+1):
-    N = int(input())
-    card_lst = list(map(int, input().split()))
-
-    st = 1
-    en = N
-
-    winner(st, en)
+T = int(input())
+for tc in range(1, T + 1):
+    n = int(input())
+    cards = list(map(int, input().split()))
+    print(f'#{tc} {merge(0, n - 1) + 1}')

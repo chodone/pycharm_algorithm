@@ -17,7 +17,7 @@ for tc in range(1, TC+1):
                     if ST[-1] == '+':
                         ST.append(prb[i])
                     else:
-                        while ST[-1] != '+' :
+                        while ST[-1] != '+':
                             cal.append(ST.pop())
                             if not ST:
                                 break
