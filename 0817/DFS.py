@@ -15,7 +15,7 @@ def dfs(v):
         v = ST.pop()
         for w in G[v]:
             if visited[ord(w) - ord('A')] == False:
-                ST.append(v)
+                ST.append(w)
                 print(w)
                 visited[ord(w) - ord('A')] = True
 

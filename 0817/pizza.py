@@ -1,20 +1,4 @@
-# def isEmpty():
-#     pass
-#
-#
-#
-#
-#
-# TC = int(input())
-#
-# for tc in range(1, TC+1):
-#     N, M = map(int, input().split())
-#     pizza_lst = list(map(int, input().split()))
-#     pizza_idx = [idx for idx in range(1, M+1)]
-#     fire = [[0, 0] for _ in range(N)]
-#
-#     while pizza_lst:
-#
+
 
 TC = int(input())
 for tc in range(1, TC+1):
@@ -38,7 +22,7 @@ for tc in range(1, TC+1):
                 N += 1
         # 다 녹지 않은 경우 맨뒤로 다시 넣기
         else:
-           oven.append(check)
+            oven.append(check)
     print(f'#{tc} {check+1}')
 
 
