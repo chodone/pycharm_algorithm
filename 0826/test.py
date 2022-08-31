@@ -47,9 +47,9 @@ for idx in range(0, len(lst), 2):
         tree[p][1] = c
     parent[c] = p
 # print(tree)
-# pre(1)
+pre(1)
 
-postorder(1)
+# postorder(1)
 
 
 # print(tree)
