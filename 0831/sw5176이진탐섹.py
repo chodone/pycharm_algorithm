@@ -28,7 +28,6 @@ for tc in range(1, TC + 1):
             break
 
     inorder(1)
-    print(res)
     print(f'#{tc} {res.index(1) +1} {res.index(N//2) + 1}')
 
 
