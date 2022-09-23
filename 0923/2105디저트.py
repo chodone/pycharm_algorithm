@@ -7,6 +7,9 @@ def solve(k, r, c, d):
             maxV = k
         return
 
+    if d == 2 and maxV >= k*2:
+        return
+
     if r < 0 or r >= N or c < 0 or c >= N or Arr[r][c] in result[:k]:
         return
 
