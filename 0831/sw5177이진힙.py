@@ -53,3 +53,4 @@ for tc in range(1, TC + 1):
         p //= 2
 
     print(f'#{tc} {res}')
+    print(node)
