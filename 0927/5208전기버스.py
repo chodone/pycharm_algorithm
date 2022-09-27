@@ -9,7 +9,7 @@ def charge(busStop, batVol, cnt):
         return
 
 
-    for i in range(1, batVol+1):
+    for i in range(batVol, 0, -1):
         nBusStop = busStop + i
         if nBusStop <= N:
             charge(nBusStop, batInfo[nBusStop-1], cnt + 1)
