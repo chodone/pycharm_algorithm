@@ -5,10 +5,10 @@ def partition(L, R):
 
 
     while i <= j:
-        # 피벗보다 작은 수 찾기
+        # 피벗보다 큰 수 찾기
         while i <= j and arr[i] <= arr[p]:
             i += 1
-        # 피벗보다 큰 수 찾기
+        # 피벗보다 작은 수 찾기
         while i <= j and arr[j] > arr[p]:
             j -= 1
 
