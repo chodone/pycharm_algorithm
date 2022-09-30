@@ -1,16 +1,15 @@
 from collections import deque
 
 def solve():
-    Q = []
+    Q = deque()
     cnt = 0
-    Q.append((N, 0))
+    Q.append((N, cnt))
     while Q:
-        v,  cnt =Q.pop(0)
-        for newV in [v*2, v-20, v+1, v-1 ]:
+        v,  cnt =Q.popleft()
+        for newV in [v*2, v-10, v+1, v-1 ]:
             if newV == M:
                 return cnt + 1
             if 0 < newV <= 1000000 and not visited[newV]:
-
                 Q.append((newV, cnt+1))
                 visited[newV] = 1
     return -1

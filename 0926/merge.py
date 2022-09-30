@@ -1,4 +1,5 @@
 def merge(lLst, rLst):
+    global cnt
     lp = rp = 0
     result = []
     while lp < len(lLst) and rp < len(rLst):
@@ -8,6 +9,9 @@ def merge(lLst, rLst):
         else:
             result.append(rLst[rp])
             rp += 1
+    if lLst[-1] > rLst[-1]:
+        cnt += 1
+
     result.extend(lLst[lp:])
     result.extend(rLst[rp:])
     return result
@@ -22,6 +26,14 @@ def merge_s(lst):
     result = merge(left, right)
     return result
 
-arr = [69, 10, 30, 2, 16, 8, 31, 22]
-print(merge_s(arr))
 
+
+
+
+TC = int(input())
+for tc in range(1, TC +1):
+    N = int(input())
+    arr = list(map(int, input().split()))
+    cnt = 0
+    res = merge_s(arr)
+    print(f'#{tc} {res[N//2]} {cnt}')
