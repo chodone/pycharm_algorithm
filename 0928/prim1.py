@@ -1,7 +1,7 @@
 
 
 
-
+from pprint import pprint
 
 
 # V, E = map(int, input().split())
@@ -32,11 +32,11 @@
 
 
 def prim():
-    U = []
-    D = [10000] * (N + 1)
+    U = []      # MST 포함 여부
+    D = [10000] * (N + 1)    # 가중치의 최대값 이상으로 초기화 ,
     P = [10000] * (N + 1)
     D[0] =0
-    while len(U) < (N + 1):
+    while len(U) < N+1:
         # curV=U에 D중 가장 작은 값을 가진 정점 선택
         # D에서 최소를 구한다. (단, U에 포함되지 않은 것을 대상으로)
         minV = 10000
@@ -54,13 +54,14 @@ def prim():
                 D[i] = G[curV][i]
                 P[i]=curV
     print(U,D, P)
+    print(sum(D))
 
 
-N, E = map(int, input().split())
+N, E = map(int, input().split())      # 노드의 수가 6이라면 0까지 포함하므로 총 개수는 7개
 G = [[1000000] * (N + 1) for _ in range(N + 1)]
 for i in range(E):
     n1, n2, w = map(int, input().split())
     G[n1][n2] = w
     G[n2][n1] = w
-# print(G)
+pprint(G)
 prim()
