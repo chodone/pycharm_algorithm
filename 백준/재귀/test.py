@@ -1,0 +1,3 @@
+indent = '____'
+
+print(indent + '----')
