@@ -18,7 +18,7 @@ def prim(r,N):
         s += minV
         MTS[u] = 1
 
-    print(lst)
+
     return s
 
 TC = int(input())
