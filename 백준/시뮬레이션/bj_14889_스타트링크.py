@@ -1,23 +1,3 @@
-
-#
-# def combi(k, s):
-#     global minV
-#     if k == N//2:
-#         if k == N//2:
-#             t = abs(calc(aList) - calc(bList))
-#             if minV > t:
-#                 minV = t
-#
-#             return
-#
-#     for i in range(s, N-r+k):
-#         aList[k] = i
-#         combi(k+1, i+1)
-
-
-
-
-
 def calc(al, bl):
     A, B = 0, 0
 

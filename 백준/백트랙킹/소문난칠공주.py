@@ -1,52 +1,62 @@
-def bfs(k, r, c, s, y):
-    global cnt
-    if k == 6:
-        if s >= 4:
-            cnt += 1
-        return
+# 1. 조합으로 s가 4인 모든 경우의 수를 구한다
+# 2. 이 경우의 수를 가지고 BFS를 돌려 인접해 있는지 확인한다
+from itertools import combinations
+from collections import deque
 
-    if y == 4:
-        return
+def yCheck(gComb):
+    yNum = 0
+    for x, y in gComb:
+        if Arr[x][y] == 'Y':
+            yNum += 1
+        if yNum == 4:
+            return False
+    return True
 
-    # 우 하 좌 상
+
+def bfs(gComb):
+    Visited = [False] * 7
     dr = [0, 1, 0, -1]
     dc = [1, 0, -1, 0]
 
+    Q = deque()
+    Q.append(gComb[0])
+    Visited[0] = True
+
+    while Q:
+        cr, cc = Q.popleft()
+
+        for i in range(4):
+            nr = cr + dr[i]
+            nc = cc + dc[i]
+            if (nr, nc) in gComb:
+                nextIdx = gComb.index((nr,nc))
+                if not Visited[nextIdx]:
+                    Q.append((nr, nc))
+                    Visited[nextIdx] = True
+
+    if False in Visited:
+        return False
+    else:
+        return True
 
 
-    for i in range(4):
-        nr = r + dr[i]
-        nc = c + dc[i]
-        if 0 <= nr < 5 and 0 <= nc < 5 and not Visited[nr][nc]:
-            if Arr[nr][nc] == 'S':
-                Visited[nr][nc] = True
-                bfs(k+1, nr, nc, s+1, y)
-                Visited[nr][nc] = False
-            elif Arr[nr][nc] == 'Y':
-                Visited[nr][nc] = True
-                bfs(k+1, nr, nc, s, y+1)
-                Visited[nr][nc] = False
 
 
 
 
 
+Arr = [list(input()) for _ in range(5)]
+pos = [(i, j) for i in range(5) for j in range(5)]
+combs = list(combinations(pos, 7))
+res = 0
+for comb in combs:
+    if yCheck(comb):
+        if bfs(comb):
+            res += 1
+
+print(res)
 
 
 
-Arr = [list(input())for _ in range(5)]
-Visited = [[False]*5 for _ in range(5)]
-print(Visited)
-sNum = 0
-yNum = 0
-cnt = 0
-
-for row in range(5):
-    for col in range(5):
-        if Arr[row][col] == 'S':
-            Visited[row][col] = True
-            bfs(0, row, col, sNum+1, yNum)
-            Visited[row][col] = False
 
 
-print(cnt)
