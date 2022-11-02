@@ -16,7 +16,7 @@ for order in orderLst:
     #동
     if order == 1:
         if 0<= y + 1 < M:
-
+            pass
         else:
             continue
 
